@@ -196,7 +196,7 @@ export default function ServiceAreaMap({
       markersRef.current.forEach(marker => marker.setMap(null));
       markersRef.current = [];
     };
-  }, [highlightLocation, showControls]);
+  }, [highlightLocation, showControls, map]);
 
   return (
     <div className="relative">

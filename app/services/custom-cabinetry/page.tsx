@@ -162,7 +162,6 @@ export default function CustomCabinetryPage() {
                       </div>
                     ))}
                   </div>
-                </div>
               </div>
             ))}
           </div>
