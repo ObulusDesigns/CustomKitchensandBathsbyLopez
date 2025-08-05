@@ -2,12 +2,17 @@ export default function ServiceSchema({
   serviceName, 
   description,
   areaServed,
-  priceRange = "$$$$"
+  priceRange = "$$$$",
+  aggregateRating
 }: {
   serviceName: string;
   description: string;
   areaServed?: string | string[];
   priceRange?: string;
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+  };
 }) {
   const schema = {
     "@context": "https://schema.org",
@@ -59,8 +64,8 @@ export default function ServiceSchema({
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "127",
+      "ratingValue": aggregateRating?.ratingValue || 5.0,
+      "reviewCount": aggregateRating?.reviewCount || 127,
       "bestRating": "5",
       "worstRating": "1"
     }
