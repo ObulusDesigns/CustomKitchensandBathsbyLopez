@@ -234,11 +234,6 @@ export default function LocationPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="mt-8">
-                  <Link href="/contact" className="btn-primary">
-                    Schedule Your {location.name} Consultation
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

@@ -37,52 +37,61 @@ const isOpen = todayHours?.open !== 'Closed';
 
 return (
   <>
-    {/* Top Bar */}
-    <div className="bg-white border-b border-gray-200 hidden lg:block fixed top-0 left-0 right-0 z-50">
+    {/* Top Bar with Promo */}
+    <div className="bg-burgundy-light border-b border-burgundy hidden lg:block fixed top-0 left-0 right-0 z-50">
       <div className="container-custom">
-        <div className="flex items-center justify-between py-2 text-sm">
+        <div className="relative flex items-center justify-between py-2 text-sm">
           {/* Left side - Contact Info */}
-          <div className="flex items-center space-x-6">
-            <a href={`mailto:${BUSINESS_INFO.email}`} className="flex items-center space-x-2 text-gray-600 hover:text-burgundy transition-colors">
+          <div className="flex items-center space-x-4">
+            <a href={`mailto:${BUSINESS_INFO.email}`} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <span>{BUSINESS_INFO.email}</span>
             </a>
             
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="flex items-center space-x-2 text-gray-600 hover:text-burgundy transition-colors">
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <span>{BUSINESS_INFO.phone}</span>
             </a>
-            
-            <div className="flex items-center space-x-2 text-gray-600">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>
-                {isOpen && todayHours ? `Open until ${todayHours.close}` : 'Closed - Opens Monday 8:00 AM'}
-              </span>
+          </div>
+
+          {/* Center - Promo/Emergency CTA - Absolutely positioned */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <div className="bg-gold text-burgundy px-4 py-1 rounded-full font-bold animate-pulse">
+              🔥 20% OFF First-Time Customers - Limited Time!
             </div>
           </div>
 
+          {/* Right side - Hours */}
+          <div className="flex items-center space-x-2 text-white/80">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>
+              {isOpen && todayHours ? `Open until ${todayHours.close}` : 'Closed - Opens Monday 8:00 AM'}
+            </span>
+          </div>
         </div>
       </div>
     </div>
 
-    {/* Main Navigation */}
-    <nav className="fixed top-0 lg:top-9 left-0 right-0 z-50 transition-all duration-300 bg-burgundy-dark">
+    {/* Main Navigation - Always burgundy */}
+    <nav className={`fixed top-0 lg:top-9 left-0 right-0 z-50 transition-all duration-300 bg-burgundy-dark ${
+      isScrolled ? 'shadow-xl' : 'shadow-lg'
+    }`}>
       <div className="container-custom">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div className="flex items-center justify-between h-28 md:h-32">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative w-20 h-20 md:w-24 md:h-24">
+            <div className="relative w-24 h-24 md:w-28 md:h-28">
               <Image
                 src="/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp"
                 alt="Custom Kitchens & Baths by Lopez"
-                width={96}
-                height={96}
+                width={112}
+                height={112}
                 className="object-contain"
                 priority
                 quality={100}
@@ -102,22 +111,24 @@ return (
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button
+              <div
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
-                className="flex items-center space-x-1 text-white hover:text-gold transition-colors duration-300 py-6"
+                className="flex items-center space-x-1 py-6"
               >
-                <span className="font-medium">Services</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                <Link href="/services" className="flex items-center space-x-1 text-white hover:text-gold transition-colors duration-300 font-medium">
+                  <span>Services</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </Link>
+              </div>
               
               {isServicesOpen && (
                 <div
                   onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setIsServicesOpen(false)}
-                  className="absolute top-full left-0 w-64 bg-white rounded-lg shadow-xl py-4 animate-fade-in-down max-h-[500px] overflow-y-auto"
+                  className="absolute top-full left-0 w-64 bg-white rounded-lg shadow-xl py-4 animate-fade-in-down max-h-[500px] overflow-y-auto border border-gray-200"
                 >
                   {/* Primary Services */}
                   {SERVICES.primary.map((service) => (
@@ -163,22 +174,24 @@ return (
               onMouseEnter={() => setIsLocationsOpen(true)}
               onMouseLeave={() => setIsLocationsOpen(false)}
             >
-              <button
+              <div
                 onMouseEnter={() => setIsLocationsOpen(true)}
                 onMouseLeave={() => setIsLocationsOpen(false)}
-                className="flex items-center space-x-1 text-white hover:text-gold transition-colors duration-300 py-6"
+                className="flex items-center space-x-1 py-6"
               >
-                <span className="font-medium">Locations</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                <Link href="/locations" className="flex items-center space-x-1 text-white hover:text-gold transition-colors duration-300 font-medium">
+                  <span>Areas Served</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </Link>
+              </div>
               
               {isLocationsOpen && (
                 <div
                   onMouseEnter={() => setIsLocationsOpen(true)}
                   onMouseLeave={() => setIsLocationsOpen(false)}
-                  className="absolute top-full left-0 w-64 bg-white rounded-lg shadow-xl py-4 max-h-96 overflow-y-auto animate-fade-in-down"
+                  className="absolute top-full left-0 w-64 bg-white rounded-lg shadow-xl py-4 max-h-96 overflow-y-auto animate-fade-in-down border border-gray-200"
                 >
                   <div className="px-6 py-2 text-sm font-semibold text-burgundy">Popular Areas</div>
                   {SERVICE_AREAS.primary.slice(0, 8).map((town) => (
@@ -195,7 +208,7 @@ return (
                       href="/locations"
                       className="block px-6 py-3 text-burgundy font-semibold hover:text-gold hover:bg-cream transition-colors duration-200"
                     >
-                      View All Locations
+                      View All Areas Served
                     </Link>
                   </div>
                 </div>
@@ -211,37 +224,18 @@ return (
             </Link>
           </div>
 
-          {/* Right Side - Location Selector & CTA */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {/* Location Selector */}
-            <div className="flex items-center space-x-2 text-sm">
-              <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <select
-                value={selectedLocation}
-                onChange={(e) => setSelectedLocation(e.target.value)}
-                className="bg-transparent text-white font-medium focus:outline-none cursor-pointer"
-              >
-                <option value="Monmouth County" className="text-gray-800">Monmouth County</option>
-                {SERVICE_AREAS.primary.map((town) => (
-                  <option key={town} value={town} className="text-gray-800">{town}</option>
-                ))}
-              </select>
-            </div>
-
+          {/* Right Side - Phone CTA */}
+          <div className="hidden lg:flex items-center">
             {/* Phone Number */}
             <a
               href={`tel:${BUSINESS_INFO.phone}`}
-              className="flex items-center space-x-2 text-gold hover:text-white transition-colors duration-300"
+              className="flex items-center space-x-2 text-gold hover:text-white transition-colors duration-300 bg-burgundy hover:bg-burgundy-light px-6 py-3 rounded-lg font-bold transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span className="font-semibold">{BUSINESS_INFO.phone}</span>
+              <span>Call Now: {BUSINESS_INFO.phone}</span>
             </a>
-
           </div>
 
           {/* Mobile Menu Button */}

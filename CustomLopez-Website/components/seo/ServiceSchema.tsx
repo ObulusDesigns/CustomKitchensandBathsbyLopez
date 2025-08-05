@@ -1,57 +1,63 @@
-import { BUSINESS_INFO } from '@/lib/constants';
-
-interface ServiceSchemaProps {
+export default function ServiceSchema({ 
+  serviceName, 
+  description,
+  areaServed,
+  priceRange = "$$$$"
+}: {
   serviceName: string;
   description: string;
-  areaServed?: string[];
+  areaServed?: string;
   priceRange?: string;
-  aggregateRating?: {
-    ratingValue: number;
-    reviewCount: number;
-  };
-}
-
-export default function ServiceSchema({
-  serviceName,
-  description,
-  areaServed = ['Monmouth County', 'Ocean County', 'Middlesex County'],
-  priceRange = '$$',
-  aggregateRating
-}: ServiceSchemaProps) {
+}) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": serviceName,
+    "name": serviceName,
+    "description": description,
     "provider": {
       "@type": "LocalBusiness",
-      "name": BUSINESS_INFO.name,
-      "telephone": BUSINESS_INFO.phone,
-      "email": BUSINESS_INFO.email,
+      "name": "Custom Kitchens & Baths by Lopez",
+      "telephone": "+1-732-707-7777",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": BUSINESS_INFO.address.street,
-        "addressLocality": BUSINESS_INFO.address.city,
-        "addressRegion": BUSINESS_INFO.address.stateAbbr,
-        "postalCode": BUSINESS_INFO.address.zip,
-        "addressCountry": BUSINESS_INFO.address.country
+        "streetAddress": "2 Claire Rd",
+        "addressLocality": "East Brunswick",
+        "addressRegion": "NJ",
+        "postalCode": "08816",
+        "addressCountry": "US"
       },
+      "url": "https://customkitchensbylopez.com",
       "priceRange": priceRange,
-      "url": BUSINESS_INFO.website
+      "image": "https://customkitchensbylopez.com/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp"
     },
-    "description": description,
-    "areaServed": areaServed.map(area => ({
-      "@type": "City",
-      "name": area
-    })),
-    ...(aggregateRating && {
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": aggregateRating.ratingValue,
-        "reviewCount": aggregateRating.reviewCount,
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    })
+    "areaServed": areaServed ? {
+      "@type": "Place",
+      "name": areaServed
+    } : {
+      "@type": "AdministrativeArea",
+      "name": "Monmouth County, NJ"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `${serviceName} Services`,
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": `Professional ${serviceName}`,
+            "description": `Expert ${serviceName.toLowerCase()} services with quality materials and craftsmanship`
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   };
 
   return (

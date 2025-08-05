@@ -162,9 +162,6 @@ export default function CountertopInstallationPage() {
                   </div>
                 </div>
 
-                <Link href="/contact" className="btn-primary">
-                  Get Your Free Quote
-                </Link>
               </div>
             </div>
           </div>
@@ -215,9 +212,6 @@ export default function CountertopInstallationPage() {
               <p className="text-gray-600 mb-6">
                 Not sure which material is right for you? Visit our showroom to see and feel samples.
               </p>
-              <Link href="/contact" className="btn-secondary">
-                Schedule Showroom Visit
-              </Link>
             </div>
           </div>
         </section>
@@ -368,12 +362,6 @@ export default function CountertopInstallationPage() {
               ))}
             </div>
 
-            <div className="text-center mt-10">
-              <p className="text-gray-600 mb-4">Have more questions about countertop installation?</p>
-              <Link href="/contact" className="btn-primary">
-                Contact Our Experts
-              </Link>
-            </div>
           </div>
         </section>
 

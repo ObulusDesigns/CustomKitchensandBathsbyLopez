@@ -361,9 +361,6 @@ export default function AboutPage() {
             <p className="text-gray-600 mb-6">
               {BUSINESS_INFO.license} • {BUSINESS_INFO.insurance}
             </p>
-            <Link href="/contact" className="btn-primary">
-              Work with Award-Winning Professionals
-            </Link>
           </div>
         </div>
       </section>
@@ -384,9 +381,6 @@ export default function AboutPage() {
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               Call {BUSINESS_INFO.phone}
-            </Link>
-            <Link href="/contact" className="btn-secondary">
-              Schedule Your Free Consultation
             </Link>
           </div>
         </div>

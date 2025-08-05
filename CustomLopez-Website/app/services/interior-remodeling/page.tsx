@@ -258,10 +258,7 @@ export default function InteriorRemodelingPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/contact" className="btn-primary">
-                    Schedule Consultation
-                  </Link>
-                  <Link href="/portfolio" className="btn-secondary">
+                  <Link href="/portfolio" className="btn-primary">
                     View Our Work
                   </Link>
                 </div>
@@ -363,12 +360,6 @@ export default function InteriorRemodelingPage() {
               ))}
             </div>
 
-            <div className="mt-10 text-center">
-              <p className="text-gray-600 mb-4">Not sure which style is right for you?</p>
-              <Link href="/contact" className="btn-secondary">
-                Get Design Consultation
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -595,12 +586,6 @@ export default function InteriorRemodelingPage() {
               ))}
             </div>
 
-            <div className="text-center mt-10">
-              <p className="text-gray-600 mb-4">Have more questions about interior remodeling?</p>
-              <Link href="/contact" className="btn-primary">
-                Get Expert Advice
-              </Link>
-            </div>
           </div>
         </section>
 

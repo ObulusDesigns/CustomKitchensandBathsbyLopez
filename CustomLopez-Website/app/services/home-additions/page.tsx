@@ -249,9 +249,6 @@ export default function HomeAdditionsPage() {
                   </div>
                 </div>
 
-                <Link href="/contact" className="btn-primary">
-                  Start Planning Your Addition
-                </Link>
               </div>
               
               <div className="relative h-96 lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
@@ -513,12 +510,6 @@ export default function HomeAdditionsPage() {
               ))}
             </div>
 
-            <div className="text-center mt-10">
-              <p className="text-gray-600 mb-4">Have specific questions about your addition project?</p>
-              <Link href="/contact" className="btn-primary">
-                Get Expert Answers
-              </Link>
-            </div>
           </div>
         </section>
 

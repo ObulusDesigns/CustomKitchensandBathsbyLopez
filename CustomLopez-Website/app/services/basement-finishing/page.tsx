@@ -276,9 +276,6 @@ export default function BasementFinishingPage() {
                   </div>
                 </div>
 
-                <Link href="/contact" className="btn-primary">
-                  Get Your Free Basement Quote
-                </Link>
               </div>
               
               <div className="relative h-96 lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
@@ -338,12 +335,6 @@ export default function BasementFinishingPage() {
               ))}
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-4">Have a unique vision for your basement?</p>
-              <Link href="/contact" className="btn-secondary">
-                Let's Discuss Your Ideas
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -491,12 +482,6 @@ export default function BasementFinishingPage() {
               ))}
             </div>
 
-            <div className="text-center mt-10">
-              <p className="text-gray-600 mb-4">Ready to discuss your basement project?</p>
-              <Link href="/contact" className="btn-primary">
-                Schedule Free Consultation
-              </Link>
-            </div>
           </div>
         </section>
 

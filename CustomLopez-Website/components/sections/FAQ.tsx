@@ -29,8 +29,8 @@ export default function FAQ() {
       answer: `Yes, we are fully licensed (${BUSINESS_INFO.license}) and carry comprehensive liability insurance and workers\' compensation. We\'re also bonded for your protection. All our work meets or exceeds New Jersey building codes and industry standards.`
     },
     {
-      question: 'Do you offer financing options?',
-      answer: 'We understand that remodeling is a significant investment. We work with several financing partners to offer flexible payment options. We also accept all major credit cards and can structure payment schedules to align with project milestones.'
+      question: 'What payment methods do you accept?',
+      answer: 'We accept all major credit cards, checks, and bank transfers. We can structure payment schedules to align with project milestones to make your remodeling project more manageable.'
     },
     {
       question: 'Can you work with my existing design or architect?',
@@ -119,9 +119,6 @@ export default function FAQ() {
               </svg>
               Call {BUSINESS_INFO.phone}
             </a>
-            <Link href="tel:7329950300" className="btn-primary">
-              Schedule Free Consultation
-            </Link>
           </div>
         </div>
       </div>

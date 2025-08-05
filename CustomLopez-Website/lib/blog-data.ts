@@ -290,14 +290,13 @@ However, the value extends beyond resale:
 - Enhanced family time and entertaining
 - Personal satisfaction
 
-## Financing Your Kitchen Remodel
+## Payment Options for Your Kitchen Remodel
 
-Popular financing options in New Jersey include:
-- **Home equity loans**: Fixed rates, predictable payments
-- **HELOCs**: Flexible access to funds
-- **Personal loans**: No collateral required
-- **Contractor financing**: Often 0% promotional rates
-- **Cash-out refinancing**: Access home equity
+We understand that kitchen remodeling is a significant investment. To make your project more manageable:
+- **Payment schedules**: We can structure payments to align with project milestones
+- **Major credit cards accepted**: All major cards welcome for your convenience
+- **Bank transfers and checks**: Traditional payment methods available
+- **Planning ahead**: Consider setting aside funds over time to prepare for your dream kitchen
 
 ## Getting Accurate Estimates
 

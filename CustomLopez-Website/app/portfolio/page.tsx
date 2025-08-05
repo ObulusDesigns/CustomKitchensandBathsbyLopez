@@ -233,9 +233,6 @@ export default function PortfolioPage() {
               </svg>
               Call {BUSINESS_INFO.phone}
             </Link>
-            <Link href="/contact" className="btn-secondary">
-              Request Free Consultation
-            </Link>
           </div>
         </div>
       </section>

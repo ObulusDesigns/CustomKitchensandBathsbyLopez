@@ -339,9 +339,6 @@ export default function TestimonialsPage() {
                 </svg>
                 Call {BUSINESS_INFO.phone}
               </Link>
-              <Link href="/contact" className="btn-secondary">
-                Get Your Free Consultation
-              </Link>
             </div>
           </div>
         </section>

@@ -93,31 +93,6 @@ export default function WhyChooseUs() {
           ))}
         </div>
 
-        {/* Trust Badges */}
-        <div className="mt-12 pt-12 border-t border-gray-200">
-          <div className="text-center mb-8">
-            <h3 className="heading-4 text-burgundy mb-2">Trusted by Industry Leaders</h3>
-            <p className="text-gray-600">Certified and recognized for excellence</p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {TRUST_SIGNALS.certifications.map((cert) => (
-              <div key={cert.name} className="text-center">
-                <div className="bg-gray-50 rounded-lg p-4 mb-2">
-                  <Image
-                    src={cert.logo}
-                    alt={cert.alt || cert.name}
-                    width={100}
-                    height={65}
-                    className="object-contain"
-                    style={{ width: 'auto', height: 'auto', maxWidth: '100px', maxHeight: '65px' }}
-                  />
-                </div>
-                <p className="text-sm font-medium text-gray-700">{cert.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

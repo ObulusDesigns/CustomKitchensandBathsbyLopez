@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display, Montserrat } from 'next/font/google'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -58,6 +58,12 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -69,10 +75,11 @@ export default function RootLayout({
         <LocalBusinessSchema />
         <OrganizationSchema />
       </head>
-      <body className={`${inter.className} font-body`}>
+      <body className={`${inter.className} font-body no-js`}>
+        <script dangerouslySetInnerHTML={{ __html: `document.body.classList.remove('no-js');` }} />
         <ClientProviders>
           <Navbar />
-          <main className="pt-20 md:pt-24 lg:pt-32">{children}</main>
+          <main className="pt-24 md:pt-28 lg:pt-36">{children}</main>
           <Footer />
         </ClientProviders>
       </body>

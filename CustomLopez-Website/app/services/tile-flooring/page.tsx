@@ -202,10 +202,7 @@ export default function TileFlooringPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/contact" className="btn-primary">
-                    Get Free Estimate
-                  </Link>
-                  <Link href="/portfolio" className="btn-secondary">
+                  <Link href="/portfolio" className="btn-primary">
                     View Our Work
                   </Link>
                 </div>
@@ -301,12 +298,6 @@ export default function TileFlooringPage() {
               ))}
             </div>
 
-            <div className="mt-10 text-center">
-              <p className="text-gray-600 mb-4">Need help choosing the perfect pattern for your space?</p>
-              <Link href="/contact" className="btn-secondary">
-                Schedule Design Consultation
-              </Link>
-            </div>
           </div>
         </section>
 

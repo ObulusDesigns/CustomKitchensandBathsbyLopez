@@ -148,10 +148,7 @@ export default function BlogPostPage({ params }: PageProps) {
                 Turn your remodeling ideas into reality with Monmouth County's trusted experts.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="btn-primary">
-                  Get Free Consultation
-                </Link>
-                <Link href={`tel:${BUSINESS_INFO.phone}`} className="btn-secondary">
+                <Link href={`tel:${BUSINESS_INFO.phone}`} className="btn-primary">
                   Call {BUSINESS_INFO.phone}
                 </Link>
               </div>
