@@ -1,0 +1,20 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /*.json
+Disallow: /*_buildManifest.js
+Disallow: /*_middlewareManifest.js
+Disallow: /*_ssgManifest.js
+Disallow: /*.js.map
+
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+Host: https://customkitchensbylopez.com
+Sitemap: https://customkitchensbylopez.com/sitemap.xml
