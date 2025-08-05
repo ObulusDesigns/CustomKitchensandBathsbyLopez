@@ -28,6 +28,7 @@ export const BUSINESS_INFO = {
     youtube: 'https://youtube.com/@customkitchensbylopez',
     linkedin: 'https://linkedin.com/company/customkitchensbylopez',
     houzz: 'https://houzz.com/pro/customkitchensbylopez',
+    yelp: 'custom-kitchens-and-baths-by-lopez-east-brunswick',
   },
   license: 'NJ License #13VH10806200',
   insurance: 'Fully Licensed & Insured',

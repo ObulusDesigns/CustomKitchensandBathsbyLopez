@@ -1,6 +1,16 @@
 // SEO Configuration
 // Centralized SEO settings and metadata
 
+type ServiceKey = 
+  | 'kitchen-remodeling'
+  | 'bathroom-remodeling'
+  | 'custom-cabinetry'
+  | 'countertop-installation'
+  | 'basement-finishing'
+  | 'home-additions'
+  | 'interior-remodeling'
+  | 'tile-flooring';
+
 export const SEO_CONFIG = {
   // Site-wide defaults
   siteName: 'Custom Kitchens & Baths by Lopez',
@@ -139,7 +149,7 @@ export const SEO_CONFIG = {
 
 // Helper function to generate consistent page titles
 export function generatePageTitle(pageName: string, location?: string): string {
-  const baseTitle = SEO_CONFIG.services[pageName]?.title || pageName;
+  const baseTitle = SEO_CONFIG.services[pageName as ServiceKey]?.title || pageName;
   
   if (location) {
     return `${baseTitle} in ${location}, NJ | ${SEO_CONFIG.siteName}`;
@@ -150,7 +160,7 @@ export function generatePageTitle(pageName: string, location?: string): string {
 
 // Helper function to generate meta descriptions
 export function generateMetaDescription(serviceName: string, location?: string): string {
-  const baseDescription = SEO_CONFIG.services[serviceName]?.description || 
+  const baseDescription = SEO_CONFIG.services[serviceName as ServiceKey]?.description || 
     `Professional ${serviceName} services in Monmouth County, NJ.`;
   
   if (location) {

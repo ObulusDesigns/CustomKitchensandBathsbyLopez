@@ -12,7 +12,6 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
 
   useEffect(() => {
     // Ensure client-side only
-    console.log('ClientProviders mounted');
   }, []);
 
   return (
