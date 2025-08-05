@@ -18,9 +18,9 @@ export default function LocalBusinessSchema({
   const schema = {
     '@context': 'https://schema.org',
     '@type': type,
-    '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.com'}/#organization`,
+    '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.co'}/#organization`,
     name: BUSINESS_INFO.name,
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.com',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.co',
     telephone: BUSINESS_INFO.phone,
     email: BUSINESS_INFO.email,
     address: {

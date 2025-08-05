@@ -4,7 +4,7 @@ import { SERVICES } from '@/lib/constants';
 import { blogPosts } from '@/lib/blog-data';
 import { portfolioProjects } from '@/lib/portfolio-data';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.com';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.co';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();

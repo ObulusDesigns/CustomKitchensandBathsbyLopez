@@ -31,9 +31,9 @@ export default function ServiceSchema({
         "postalCode": "08816",
         "addressCountry": "US"
       },
-      "url": "https://customkitchensbylopez.com",
+      "url": "https://customkitchensbylopez.co",
       "priceRange": priceRange,
-      "image": "https://customkitchensbylopez.com/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp"
+      "image": "https://customkitchensbylopez.co/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp"
     },
     "areaServed": areaServed ? (
       Array.isArray(areaServed) ? 

@@ -6,7 +6,7 @@ interface ReviewSchemaProps {
 }
 
 export default function ReviewSchema({ reviews }: ReviewSchemaProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.co';
   
   // Calculate aggregate rating
   const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);

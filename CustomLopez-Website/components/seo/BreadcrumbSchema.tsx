@@ -8,7 +8,7 @@ interface BreadcrumbSchemaProps {
 }
 
 export default function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.co';
   
   const breadcrumbList = {
     '@context': 'https://schema.org',

@@ -1,5 +1,5 @@
 # Robots.txt for Custom Kitchens & Baths by Lopez
-# https://customkitchensbylopez.com
+# https://customkitchensbylopez.co
 
 User-agent: *
 Allow: /
@@ -9,7 +9,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemap location
-Sitemap: https://customkitchensbylopez.com/sitemap.xml
+Sitemap: https://customkitchensbylopez.co/sitemap.xml
 
 # Crawl-delay for bots that respect it
 User-agent: *

@@ -14,7 +14,7 @@ type ServiceKey =
 export const SEO_CONFIG = {
   // Site-wide defaults
   siteName: 'Custom Kitchens & Baths by Lopez',
-  siteUrl: 'https://customkitchensbylopez.com',
+  siteUrl: 'https://customkitchensbylopez.co',
   defaultTitle: 'Custom Kitchens & Baths by Lopez | Luxury Kitchen & Bathroom Remodeling in Monmouth County NJ',
   titleTemplate: '%s | Custom Kitchens & Baths by Lopez',
   defaultDescription: 'Professional kitchen and bathroom remodeling services in Monmouth County, NJ. Custom cabinetry, luxury renovations, and expert craftsmanship. Serving Freehold, Colts Neck, Holmdel, and surrounding areas.',
@@ -30,8 +30,8 @@ export const SEO_CONFIG = {
   business: {
     name: 'Custom Kitchens & Baths by Lopez',
     legalName: 'Custom Kitchens & Baths by Lopez LLC',
-    url: 'https://customkitchensbylopez.com',
-    logo: 'https://customkitchensbylopez.com/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp',
+    url: 'https://customkitchensbylopez.co',
+    logo: 'https://customkitchensbylopez.co/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp',
     foundingDate: '1973',
     founder: {
       name: 'Lopez Family',

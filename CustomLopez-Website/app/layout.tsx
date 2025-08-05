@@ -26,7 +26,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://customkitchensbylopez.co'),
   title: 'Custom Kitchens & Baths by Lopez | Luxury Kitchen & Bathroom Remodeling in Monmouth County NJ',
   description: 'Professional kitchen and bathroom remodeling services in Monmouth County, NJ. Custom cabinetry, luxury renovations, and expert craftsmanship. Serving Freehold, Colts Neck, Holmdel, and surrounding areas.',
   keywords: 'kitchen remodeling, bathroom renovation, custom kitchens, Monmouth County, NJ, Freehold, Colts Neck, Holmdel, luxury remodeling',
