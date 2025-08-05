@@ -1,10 +1,10 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "buildCommand": "cd CustomLopez-Website && npm run build",
   "devCommand": "cd CustomLopez-Website && npm run dev",
   "installCommand": "cd CustomLopez-Website && npm install",
   "outputDirectory": "CustomLopez-Website/.next",
-  "rootDirectory": "CustomLopez-Website",
   "public": true,
   "github": {
     "silent": true
