@@ -6,7 +6,7 @@ export default function ServiceSchema({
 }: {
   serviceName: string;
   description: string;
-  areaServed?: string;
+  areaServed?: string | string[];
   priceRange?: string;
 }) {
   const schema = {
@@ -30,10 +30,16 @@ export default function ServiceSchema({
       "priceRange": priceRange,
       "image": "https://customkitchensbylopez.com/images/logo/SHOP-LOPEZKITCHEN-PROOF-1.webp"
     },
-    "areaServed": areaServed ? {
-      "@type": "Place",
-      "name": areaServed
-    } : {
+    "areaServed": areaServed ? (
+      Array.isArray(areaServed) ? 
+        areaServed.map(area => ({
+          "@type": "Place",
+          "name": area
+        })) : {
+          "@type": "Place",
+          "name": areaServed
+        }
+    ) : {
       "@type": "AdministrativeArea",
       "name": "Monmouth County, NJ"
     },
