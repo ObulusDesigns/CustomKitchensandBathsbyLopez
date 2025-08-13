@@ -2,19 +2,34 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { SERVICES } from '@/lib/constants';
 
 export default function Services() {
-  const serviceImages = {
-    'kitchen-remodeling': '/images/gallery/IMG_4149.jpeg',
-    'bathroom-remodeling': '/images/gallery/IMG_0428.jpeg',
-    'custom-cabinetry': '/images/gallery/IMG_6415.jpeg',
-    'countertop-installation': '/images/gallery/IMG_6661.jpeg',
-    'tile-flooring': '/images/gallery/IMG_5705.jpeg',
-    'home-additions': '/images/gallery/IMG_6162.jpeg',
-    'basement-finishing': '/images/gallery/IMG_0430.jpeg',
-    'interior-remodeling': '/images/gallery/IMG_4922.jpeg',
+  const serviceIcons = {
+    'kitchen-remodeling': (
+      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+    ),
+    'bathroom-remodeling': (
+      <path d="M7 7h10a2 2 0 012 2v9a1 1 0 11-2 0v-9H7a1 1 0 110-2zM5 22a2 2 0 002 2h10a2 2 0 002-2v-2a2 2 0 00-2-2H7a2 2 0 00-2 2v2zm2 0v-2h10v2H7z"/>
+    ),
+    'custom-cabinetry': (
+      <path d="M19 3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+    ),
+    'countertop-installation': (
+      <path d="M19 3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+    ),
+    'tile-flooring': (
+      <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+    ),
+    'home-additions': (
+      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+    ),
+    'basement-finishing': (
+      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+    ),
+    'interior-remodeling': (
+      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+    ),
   };
 
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -71,28 +86,20 @@ export default function Services() {
               className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden animate-on-scroll"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              {/* Service Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={serviceImages[service.id as keyof typeof serviceImages] || '/images/gallery/IMG_4149.jpeg'}
-                  alt={`${service.name} in Monmouth County NJ`}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  quality={85}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                
-                {/* Service Title Overlay */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-lg font-bold text-white">
-                    {service.name}
-                  </h3>
+              {/* Service Icon */}
+              <div className="relative h-48 bg-gradient-to-br from-burgundy/10 to-gold/10 flex items-center justify-center group-hover:from-burgundy/20 group-hover:to-gold/20 transition-colors duration-300">
+                <div className="w-24 h-24 bg-white/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-12 h-12 text-burgundy" fill="currentColor" viewBox="0 0 24 24">
+                    {serviceIcons[service.id as keyof typeof serviceIcons]}
+                  </svg>
                 </div>
               </div>
 
               {/* Service Content */}
               <div className="p-4">
+                <h3 className="text-lg font-bold text-burgundy mb-2">
+                  {service.name}
+                </h3>
                 <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                   {service.description}
                 </p>

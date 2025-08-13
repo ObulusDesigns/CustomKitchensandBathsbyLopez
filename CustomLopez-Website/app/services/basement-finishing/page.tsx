@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import ServiceSchema from '@/components/seo/ServiceSchema';
 import FAQSchema from '@/components/seo/FAQSchema';
-import ServiceCTA from '@/components/sections/ServiceCTA';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, TRUST_SIGNALS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -278,13 +279,16 @@ export default function BasementFinishingPage() {
 
               </div>
               
-              <div className="relative h-96 lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/gallery/IMG_6887.jpeg"
-                  alt="Beautiful finished basement in Monmouth County home"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-xl p-12 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-16 h-16 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-3xl font-bold text-burgundy mb-4">Transform Your Basement</h3>
+                  <p className="text-xl text-gray-600">Add 30-50% More Living Space</p>
+                </div>
               </div>
             </div>
           </div>
@@ -514,11 +518,14 @@ export default function BasementFinishingPage() {
           </div>
         </section>
 
-        <ServiceCTA 
+        <GradientCTA
           title="Ready to Transform Your Basement?"
           description="Don't let valuable square footage go to waste. Let's create the perfect basement space for your family's needs."
           primaryButtonText="Get Free Estimate"
-          secondaryButtonText="View Basement Ideas"
+          primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+          secondaryButtonText="View Portfolio"
+          secondaryButtonLink="/portfolio"
+          variant="gold"
         />
       </PageLayout>
     </>

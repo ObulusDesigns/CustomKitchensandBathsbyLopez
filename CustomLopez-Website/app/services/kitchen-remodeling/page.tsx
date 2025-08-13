@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, SERVICES } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -17,28 +19,22 @@ export const metadata: Metadata = {
 
 const kitchenService = SERVICES.primary.find(s => s.id === 'kitchen-remodeling')!;
 
-// Sample projects for showcase
-const kitchenProjects = [
+// Kitchen specialties for showcase
+const kitchenSpecialties = [
   {
-    id: 1,
-    title: 'Modern White Kitchen in Colts Neck',
-    image: '/images/gallery/IMG_4149.jpeg',
-    location: 'Colts Neck, NJ',
-    features: ['Quartz Countertops', 'Custom Island', 'Soft-Close Cabinets']
+    title: 'Custom Cabinetry',
+    description: 'Tailored storage solutions designed to maximize space and complement your style',
+    features: ['Soft-Close Hardware', 'Custom Finishes', 'Pull-Out Organizers']
   },
   {
-    id: 2,
-    title: 'Traditional Kitchen Renovation in Rumson',
-    image: '/images/gallery/IMG_5705.jpeg',
-    location: 'Rumson, NJ',
-    features: ['Granite Counters', 'Crown Molding', 'Professional Appliances']
+    title: 'Premium Countertops',
+    description: 'High-quality surfaces from quartz to granite that combine beauty with durability',
+    features: ['Quartz & Granite', 'Waterfall Edges', 'Seamless Installation']
   },
   {
-    id: 3,
-    title: 'Contemporary Kitchen in Holmdel',
-    image: '/images/gallery/IMG_6661.jpeg',
-    location: 'Holmdel, NJ',
-    features: ['Waterfall Island', 'Hidden Storage', 'LED Lighting']
+    title: 'Smart Kitchen Technology',
+    description: 'Modern conveniences that make your kitchen more efficient and enjoyable',
+    features: ['Smart Appliances', 'LED Lighting', 'USB Charging Stations']
   }
 ];
 
@@ -114,7 +110,7 @@ export default function KitchenRemodelingPage() {
       </section>
 
       {/* Our Process */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-burgundy mb-4">
@@ -126,64 +122,61 @@ export default function KitchenRemodelingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step) => (
-              <div key={step.number} className="text-center">
-                <div className="w-20 h-20 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-white">{step.number}</span>
-                </div>
-                <h3 className="text-xl font-semibold text-burgundy mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </div>
-            ))}
-          </div>
+          <ProcessSteps steps={processSteps} variant="grid" />
         </div>
       </section>
 
-      {/* Recent Projects */}
+      {/* Kitchen Specialties */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-burgundy mb-4">
-              Recent Kitchen Transformations
+              Our Kitchen Specialties
             </h2>
             <p className="body-large text-gray-600 max-w-3xl mx-auto">
-              Browse our portfolio of kitchen remodeling projects completed throughout Monmouth County. 
-              Each project showcases our commitment to quality and attention to detail.
+              We bring expertise in every aspect of kitchen remodeling, from custom cabinetry 
+              to smart technology integration.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {kitchenProjects.map((project) => (
-              <div key={project.id} className="bg-white rounded-lg p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-burgundy mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-3 flex items-center">
-                  <svg className="w-4 h-4 mr-2 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+            {kitchenSpecialties.map((specialty, index) => (
+              <IconServiceCard
+                key={index}
+                icon={
+                  <svg className="w-full h-full" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                   </svg>
-                  {project.location}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.features.map((feature) => (
-                    <span key={feature} className="text-sm bg-cream px-3 py-1 rounded-full text-burgundy">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                }
+                title={specialty.title}
+                description={specialty.description}
+                features={specialty.features}
+                accentColor="gold"
+              />
             ))}
           </div>
 
           <div className="text-center mt-10">
             <Link href="/portfolio" className="btn-primary">
-              View Full Portfolio
+              View Our Work
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Call to Action */}
+      <GradientCTA
+        title="Ready to Transform Your Kitchen?"
+        description="Schedule your free consultation today and let's create the kitchen of your dreams."
+        primaryButtonText="Get Free Consultation"
+        primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+        secondaryButtonText="View Our Portfolio"
+        secondaryButtonLink="/portfolio"
+        variant="burgundy"
+      />
+
       {/* Service Areas */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding bg-gradient-to-br from-cream to-white">
         <div className="container-custom">
           <div className="text-center mb-10">
             <h2 className="heading-3 text-burgundy mb-4">
@@ -200,7 +193,7 @@ export default function KitchenRemodelingPage() {
               <Link
                 key={town}
                 href={`/services/kitchen-remodeling/${town.toLowerCase().replace(/\s+/g, '-')}`}
-                className="text-center py-3 px-4 bg-white rounded-lg hover:shadow-md transition-shadow duration-200 group"
+                className="text-center py-3 px-4 bg-white rounded-lg hover:shadow-md hover:bg-gold/5 transition-all duration-200 group border border-transparent hover:border-gold/20"
               >
                 <span className="text-gray-700 group-hover:text-gold transition-colors duration-200">
                   {town}

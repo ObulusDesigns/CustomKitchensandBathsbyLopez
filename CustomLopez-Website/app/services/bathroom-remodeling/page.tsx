@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, SERVICES } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -17,28 +19,22 @@ export const metadata: Metadata = {
 
 const bathroomService = SERVICES.primary.find(s => s.id === 'bathroom-remodeling')!;
 
-// Sample projects for showcase
-const bathroomProjects = [
+// Bathroom specialties for showcase
+const bathroomSpecialties = [
   {
-    id: 1,
-    title: 'Luxury Master Bath in Colts Neck',
-    image: '/images/gallery/IMG_0428.jpeg',
-    location: 'Colts Neck, NJ',
-    features: ['Freestanding Tub', 'Walk-in Shower', 'Double Vanity']
+    title: 'Luxury Showers',
+    description: 'Custom walk-in showers with premium fixtures and innovative designs',
+    features: ['Frameless Glass', 'Rain Showerheads', 'Built-in Benches']
   },
   {
-    id: 2,
-    title: 'Spa Bathroom Retreat in Rumson',
-    image: '/images/gallery/IMG_0427.jpeg',
-    location: 'Rumson, NJ',
-    features: ['Steam Shower', 'Heated Floors', 'Custom Vanities']
+    title: 'Custom Vanities',
+    description: 'Beautiful and functional vanities tailored to your space and style',
+    features: ['Double Sinks', 'Soft-Close Drawers', 'Quartz Tops']
   },
   {
-    id: 3,
-    title: 'Modern Bathroom Suite in Holmdel',
-    image: '/images/gallery/IMG_0430.jpeg',
-    location: 'Holmdel, NJ',
-    features: ['Curbless Shower', 'Floating Vanity', 'Smart Mirror']
+    title: 'Spa Features',
+    description: 'Transform your bathroom into a personal spa retreat',
+    features: ['Steam Systems', 'Heated Floors', 'Soaking Tubs']
   }
 ];
 
@@ -114,7 +110,7 @@ export default function BathroomRemodelingPage() {
       </section>
 
       {/* Our Process */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-burgundy mb-4">
@@ -126,64 +122,62 @@ export default function BathroomRemodelingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step) => (
-              <div key={step.number} className="text-center">
-                <div className="w-20 h-20 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-white">{step.number}</span>
-                </div>
-                <h3 className="text-xl font-semibold text-burgundy mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </div>
-            ))}
-          </div>
+          <ProcessSteps steps={processSteps} variant="grid" />
         </div>
       </section>
 
-      {/* Recent Projects */}
+      {/* Bathroom Specialties */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-burgundy mb-4">
-              Recent Bathroom Transformations
+              Our Bathroom Specialties
             </h2>
             <p className="body-large text-gray-600 max-w-3xl mx-auto">
-              Browse our portfolio of bathroom remodeling projects completed throughout Monmouth County. 
-              Each project showcases our commitment to quality and attention to detail.
+              From luxury showers to spa-like features, we create bathrooms that combine 
+              beauty with functionality.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {bathroomProjects.map((project) => (
-              <div key={project.id} className="bg-white rounded-lg p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-burgundy mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-3 flex items-center">
-                  <svg className="w-4 h-4 mr-2 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+            {bathroomSpecialties.map((specialty, index) => (
+              <IconServiceCard
+                key={index}
+                icon={
+                  <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 7h10a2 2 0 012 2v9a1 1 0 11-2 0v-9H7a1 1 0 110-2zM5 22a2 2 0 002 2h10a2 2 0 002-2v-2a2 2 0 00-2-2H7a2 2 0 00-2 2v2zm2 0v-2h10v2H7z"/>
+                    <circle cx="12" cy="5" r="2"/>
                   </svg>
-                  {project.location}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.features.map((feature) => (
-                    <span key={feature} className="text-sm bg-cream px-3 py-1 rounded-full text-burgundy">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                }
+                title={specialty.title}
+                description={specialty.description}
+                features={specialty.features}
+                accentColor="burgundy"
+              />
             ))}
           </div>
 
           <div className="text-center mt-10">
             <Link href="/portfolio" className="btn-primary">
-              View Full Portfolio
+              View Our Work
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Call to Action */}
+      <GradientCTA
+        title="Ready for Your Dream Bathroom?"
+        description="Let's create a beautiful, functional bathroom that you'll love for years to come."
+        primaryButtonText="Schedule Free Consultation"
+        primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+        secondaryButtonText="See Our Portfolio"
+        secondaryButtonLink="/portfolio"
+        variant="gold"
+      />
+
       {/* Service Areas */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding bg-gradient-to-br from-cream to-white">
         <div className="container-custom">
           <div className="text-center mb-10">
             <h2 className="heading-3 text-burgundy mb-4">
@@ -200,9 +194,9 @@ export default function BathroomRemodelingPage() {
               <Link
                 key={town}
                 href={`/services/bathroom-remodeling/${town.toLowerCase().replace(/\s+/g, '-')}`}
-                className="text-center py-3 px-4 bg-white rounded-lg hover:shadow-md transition-shadow duration-200 group"
+                className="text-center py-3 px-4 bg-white rounded-lg hover:shadow-md hover:bg-burgundy/5 transition-all duration-200 group border border-transparent hover:border-burgundy/20"
               >
-                <span className="text-gray-700 group-hover:text-gold transition-colors duration-200">
+                <span className="text-gray-700 group-hover:text-burgundy transition-colors duration-200">
                   {town}
                 </span>
               </Link>

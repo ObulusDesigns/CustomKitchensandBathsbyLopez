@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import ServiceSchema from '@/components/seo/ServiceSchema';
 import FAQSchema from '@/components/seo/FAQSchema';
-import ServiceCTA from '@/components/sections/ServiceCTA';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, TRUST_SIGNALS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -48,59 +49,62 @@ const countertopTypes = [
 const process = [
   {
     step: 1,
-    title: 'Free Consultation',
-    description: 'Visit our showroom or schedule an in-home consultation to explore materials and discuss your vision.',
+    title: 'Consultation & Measurement',
+    description: 'Precise templating and material selection to ensure perfect fit and style.',
   },
   {
     step: 2,
-    title: 'Precise Measurement',
-    description: 'Our experts take detailed measurements and create templates to ensure perfect fit.',
+    title: 'Material Selection',
+    description: 'Choose from premium slabs and colors that complement your design vision.',
   },
   {
     step: 3,
-    title: 'Material Selection',
-    description: 'Choose from hundreds of slabs in our supplier network. We help you find the perfect match.',
+    title: 'Fabrication',
+    description: 'Custom cutting and edging using state-of-the-art equipment for precision.',
   },
   {
     step: 4,
-    title: 'Fabrication',
-    description: 'Your countertops are precision-cut, polished, and prepared with your chosen edge profile.',
+    title: 'Professional Installation',
+    description: 'Expert installation ensuring level surfaces and seamless joints.',
   },
   {
     step: 5,
-    title: 'Professional Installation',
-    description: 'Our certified installers ensure perfect placement, secure mounting, and flawless finishing.',
+    title: 'Sealing & Finishing',
+    description: 'Proper sealing and final detailing for lasting beauty and protection.',
   },
-  {
-    step: 6,
-    title: 'Final Inspection',
-    description: 'We thoroughly inspect every detail and provide care instructions for your new countertops.',
-  },
+];
+
+const edgeProfiles = [
+  { name: 'Straight Edge', description: 'Clean, modern look' },
+  { name: 'Beveled Edge', description: 'Angled cut for sophistication' },
+  { name: 'Bullnose', description: 'Rounded edge for safety and style' },
+  { name: 'Ogee', description: 'S-shaped curve for elegance' },
+  { name: 'Waterfall', description: 'Dramatic vertical drop' },
+  { name: 'Mitered', description: 'Thick appearance without weight' },
 ];
 
 const faqs = [
   {
     question: 'How long does countertop installation take?',
-    answer: 'Most countertop installations are completed in 1-2 days. The entire process from template to installation typically takes 1-2 weeks, depending on material availability and fabrication requirements.',
+    answer: 'Most countertop installations are completed in 1-2 days. This includes removal of old countertops, installation of new ones, and connecting sinks and appliances. Custom fabrication typically takes 1-2 weeks after templating.',
   },
   {
-    question: 'What is the most durable countertop material?',
-    answer: 'Quartz and granite are the most durable options. Quartz is non-porous and requires no sealing, while granite offers superior heat resistance. Both materials can last 25+ years with proper care.',
+    question: 'What\'s the difference between granite and quartz?',
+    answer: 'Granite is 100% natural stone, each slab unique, requiring periodic sealing. Quartz is engineered stone (95% quartz, 5% resin), offering consistent patterns, no sealing required, and superior stain resistance. Both are extremely durable.',
   },
   {
-    question: 'How much do new countertops cost in Monmouth County?',
-    answer: 'Countertop costs vary by material and project size. Basic installations start around $2,000, while premium materials for large kitchens can reach $8,000+. We provide free quotes for accurate pricing.',
+    question: 'Can you install countertops over existing ones?',
+    answer: 'In some cases, yes. We can install new countertops over existing laminate if they\'re in good condition. However, removing old countertops usually provides better results and allows us to inspect and repair the cabinets if needed.',
   },
   {
-    question: 'Can you install countertops without replacing cabinets?',
-    answer: 'Yes! We frequently install new countertops on existing cabinets. We\'ll inspect your cabinets to ensure they\'re structurally sound and make any necessary reinforcements before installation.',
+    question: 'Do you provide sink and faucet installation?',
+    answer: 'Yes! We handle complete installation including undermount or drop-in sinks, faucets, and soap dispensers. We can also recommend and source fixtures that complement your new countertops.',
   },
   {
-    question: 'Do you remove old countertops?',
-    answer: 'Absolutely. Our service includes removal and disposal of your old countertops. We handle everything from disconnecting sinks and cooktops to ensuring proper disposal of materials.',
+    question: 'What maintenance do stone countertops require?',
+    answer: 'Granite needs sealing every 1-2 years. Quartz requires no sealing. Marble needs regular sealing and careful maintenance. All stone countertops should be cleaned with mild soap and water, avoiding harsh chemicals.',
   },
 ];
-
 
 export default function CountertopInstallationPage() {
   return (
@@ -118,8 +122,8 @@ export default function CountertopInstallationPage() {
       
       <PageLayout
         hero={{
-          title: 'Countertop Installation Services',
-          subtitle: 'Transform your kitchen or bathroom with premium granite, quartz, and marble countertops',
+          title: 'Countertop Installation',
+          subtitle: 'Premium surfaces that combine beauty with performance for your kitchen and bath',
           breadcrumbs: [
             { text: 'Services', href: '/services' },
             { text: 'Countertop Installation', href: '/services/countertop-installation' }
@@ -130,38 +134,45 @@ export default function CountertopInstallationPage() {
         {/* Introduction Section */}
         <section className="section-padding bg-white">
           <div className="container-custom">
-            <div>
-              <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
                 <h2 className="heading-2 text-burgundy mb-6">
-                  Premium Countertop Installation in Monmouth County
+                  Premium Countertops That Transform Your Space
                 </h2>
                 <p className="body-large text-gray-700 mb-6">
-                  Your countertops are the centerpiece of your kitchen and bathroom. At {BUSINESS_INFO.name}, 
-                  we specialize in professional countertop installation that combines beauty, durability, and functionality.
+                  Your countertops are the workhorse of your kitchen and the centerpiece of your design. 
+                  At {BUSINESS_INFO.name}, we specialize in professional countertop installation that 
+                  delivers both stunning aesthetics and lasting performance.
                 </p>
                 <p className="text-gray-600 mb-6">
-                  With over {new Date().getFullYear() - BUSINESS_INFO.yearEstablished} years of experience 
-                  installing countertops throughout Monmouth County, we've mastered the art of perfect installation. 
-                  From classic granite to modern quartz, we work with all premium materials to create surfaces 
-                  that enhance your home's value and your daily life.
+                  From the natural beauty of granite to the consistent perfection of quartz, we offer 
+                  a wide selection of premium materials to suit every style and budget. Our expert 
+                  installers ensure flawless results that will serve your family beautifully for decades.
                 </p>
                 <p className="text-gray-600 mb-8">
-                  Our certified installers ensure precise measurements, flawless cuts, and seamless installation 
-                  that will last for decades. Whether you're updating your kitchen, renovating a bathroom, or 
-                  building new, we deliver exceptional results every time.
+                  Serving Monmouth County for over {new Date().getFullYear() - BUSINESS_INFO.yearEstablished} years, 
+                  we've installed thousands of countertops in homes from Red Bank to Colts Neck, 
+                  earning a reputation for precision, professionalism, and stunning results.
                 </p>
                 
-                <div className="grid sm:grid-cols-2 gap-6 mb-8">
-                  <div className="text-center p-4 bg-cream rounded-lg">
-                    <div className="text-3xl font-bold text-gold mb-2">500+</div>
-                    <div className="text-gray-600">Countertops Installed</div>
-                  </div>
-                  <div className="text-center p-4 bg-cream rounded-lg">
-                    <div className="text-3xl font-bold text-gold mb-2">100%</div>
-                    <div className="text-gray-600">Satisfaction Rate</div>
-                  </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/portfolio" className="btn-primary">
+                    View Our Work
+                  </Link>
                 </div>
-
+              </div>
+              
+              <div className="bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-xl p-12">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-burgundy/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-16 h-16 text-burgundy" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+                      <path d="M7 12h10v2H7zm0-4h10v2H7zm0 8h7v2H7z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-3xl font-bold text-burgundy mb-4">Premium Materials</h3>
+                  <p className="text-xl text-gray-600">Quality That Lasts</p>
+                </div>
               </div>
             </div>
           </div>
@@ -172,172 +183,154 @@ export default function CountertopInstallationPage() {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="heading-2 text-burgundy mb-4">
-                Choose Your Perfect Countertop Material
+                Premium Countertop Materials
               </h2>
               <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                We offer a wide selection of premium countertop materials to match your style, 
-                budget, and lifestyle. Each material has unique benefits and characteristics.
+                Choose from a wide selection of premium materials, each offering unique benefits 
+                and aesthetic appeal for your kitchen or bathroom.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {countertopTypes.map((type) => (
-                <div key={type.name} className="bg-white rounded-lg shadow-md p-8">
-                  <h3 className="text-2xl font-semibold text-burgundy mb-3">{type.name}</h3>
-                  <p className="text-gray-600 mb-4">{type.description}</p>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-burgundy mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {type.features.map((feature) => (
-                        <li key={feature} className="flex items-start space-x-2">
-                          <svg className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="border-t pt-4">
-                    <span className="text-sm text-gray-600">Price Range: </span>
-                    <span className="text-lg font-semibold text-gold">{type.priceRange}</span>
-                  </div>
-                </div>
+              {countertopTypes.map((type, index) => (
+                <IconServiceCard
+                  key={index}
+                  icon={
+                    <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+                    </svg>
+                  }
+                  title={type.name}
+                  description={`${type.description} Investment: ${type.priceRange}`}
+                  features={type.features.slice(0, 3)}
+                  accentColor={index % 2 === 0 ? 'burgundy' : 'gold'}
+                />
               ))}
             </div>
+          </div>
+        </section>
 
-            <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-6">
-                Not sure which material is right for you? Visit our showroom to see and feel samples.
+        {/* Edge Profiles */}
+        <section className="section-padding bg-white">
+          <div className="container-custom">
+            <div className="text-center mb-12">
+              <h2 className="heading-2 text-burgundy mb-4">
+                Custom Edge Profiles
+              </h2>
+              <p className="body-large text-gray-600 max-w-3xl mx-auto">
+                The edge profile is the finishing touch that defines your countertop's style. 
+                We offer a variety of edge treatments to complement your design.
               </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {edgeProfiles.map((profile) => (
+                <div key={profile.name} className="bg-cream rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-burgundy mb-2">{profile.name}</h3>
+                  <p className="text-gray-600 text-sm">{profile.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Installation Process */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="heading-2 text-burgundy mb-4">
-                Our Professional Installation Process
+                Our Installation Process
               </h2>
               <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                From initial consultation to final inspection, we manage every detail of your 
-                countertop installation to ensure perfect results.
+                Professional installation is crucial for countertops that look beautiful and 
+                perform flawlessly for years to come.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {process.map((item) => (
-                <div key={item.step} className="text-center">
-                  <div className="w-16 h-16 bg-gold text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-semibold text-burgundy mb-3">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
+            <ProcessSteps
+              steps={process.map(item => ({
+                number: item.step.toString(),
+                title: item.title,
+                description: item.description
+              }))}
+              variant="timeline"
+            />
           </div>
         </section>
 
-        {/* Features & Benefits */}
-        <section className="section-padding bg-cream">
+        {/* Why Choose Us */}
+        <section className="section-padding bg-white">
           <div className="container-custom">
-            <div>
-              <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
                 <h2 className="heading-2 text-burgundy mb-6">
-                  Why Choose Us for Your Countertop Installation?
+                  Why Choose Us for Your Countertops
                 </h2>
                 
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-burgundy mb-2">Certified Installers</h3>
-                      <p className="text-gray-600">
-                        Our installation team is factory-trained and certified by major manufacturers. 
-                        We follow best practices to ensure your warranty remains valid.
-                      </p>
-                    </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-burgundy mb-2">
+                      Direct Supplier Relationships
+                    </h3>
+                    <p className="text-gray-600">
+                      We work directly with quarries and manufacturers to offer the best selection 
+                      and pricing on premium materials.
+                    </p>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                        <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-burgundy mb-2">Laser Precision</h3>
-                      <p className="text-gray-600">
-                        We use laser templating technology for perfect measurements and cuts. 
-                        This ensures seamless fits around sinks, cooktops, and edges.
-                      </p>
-                    </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-burgundy mb-2">
+                      Precision Installation
+                    </h3>
+                    <p className="text-gray-600">
+                      Our certified installers use laser templating and professional techniques 
+                      for perfect fit and finish every time.
+                    </p>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-burgundy mb-2">Lifetime Support</h3>
-                      <p className="text-gray-600">
-                        Our relationship doesn't end at installation. We provide ongoing support, 
-                        maintenance tips, and are always available for questions or concerns.
-                      </p>
-                    </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-burgundy mb-2">
+                      Lifetime Support
+                    </h3>
+                    <p className="text-gray-600">
+                      We stand behind our work with comprehensive warranties and ongoing support 
+                      for maintenance and care.
+                    </p>
                   </div>
+                </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-burgundy mb-2">Competitive Pricing</h3>
-                      <p className="text-gray-600">
-                        Direct relationships with suppliers mean better prices for you. 
-                        We offer transparent pricing with no hidden fees or surprises.
-                      </p>
-                    </div>
+                <div className="mt-8">
+                  <Link href="/testimonials" className="btn-secondary">
+                    Read Customer Reviews
+                  </Link>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-xl p-12 order-1 lg:order-2">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-gold mb-2">1000+</div>
+                    <p className="text-gray-600">Countertops Installed</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-burgundy mb-2">50+</div>
+                    <p className="text-gray-600">Years Experience</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-gold mb-2">100%</div>
+                    <p className="text-gray-600">Satisfaction Rate</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-burgundy mb-2">10yr</div>
+                    <p className="text-gray-600">Warranty</p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Gallery Section */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="heading-2 text-burgundy mb-4">
-                Recent Countertop Installations
-              </h2>
-              <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                Browse our portfolio of completed countertop installations throughout Monmouth County. 
-                Each project showcases our attention to detail and commitment to quality.
-              </p>
-            </div>
-
-            
-            <div className="text-center mt-10">
-              <Link href="/portfolio" className="btn-secondary">
-                View Full Portfolio
-              </Link>
             </div>
           </div>
         </section>
@@ -346,7 +339,7 @@ export default function CountertopInstallationPage() {
         <section className="section-padding bg-gray-50">
           <div className="container-custom max-w-4xl">
             <h2 className="heading-2 text-burgundy mb-10 text-center">
-              Frequently Asked Questions
+              Countertop Installation FAQs
             </h2>
 
             <div className="space-y-6">
@@ -361,7 +354,6 @@ export default function CountertopInstallationPage() {
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
@@ -373,9 +365,8 @@ export default function CountertopInstallationPage() {
                 Countertop Installation Throughout Monmouth County
               </h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                We provide professional countertop installation services to homeowners across 
-                Monmouth County. No matter where you're located, we bring the same commitment 
-                to quality and service.
+                From coastal homes to inland estates, we bring premium countertop installation 
+                to every corner of Monmouth County.
               </p>
             </div>
 
@@ -395,9 +386,14 @@ export default function CountertopInstallationPage() {
           </div>
         </section>
 
-        <ServiceCTA 
-          title="Ready to Upgrade Your Countertops?"
-          description="Transform your kitchen or bathroom with beautiful new countertops. Schedule your free consultation today and let's discuss your vision."
+        <GradientCTA
+          title="Ready for Beautiful New Countertops?"
+          description="Transform your kitchen or bathroom with premium countertops. Schedule your free consultation today."
+          primaryButtonText="Get Free Quote"
+          primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+          secondaryButtonText="View Portfolio"
+          secondaryButtonLink="/portfolio"
+          variant="burgundy"
         />
       </PageLayout>
     </>

@@ -3,7 +3,7 @@
 export const BUSINESS_INFO = {
   name: 'Custom Kitchens & Baths by Lopez',
   owner: 'Enrique Lopez',
-  phone: '(732) 984-1043',
+  phone: '732.984.1043',
   email: 'info@customkitchensbylopez.co',
   address: {
     street: 'Serving All of Monmouth County',

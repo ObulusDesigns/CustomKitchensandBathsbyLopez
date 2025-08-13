@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, SERVICES } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -22,20 +24,17 @@ const cabinetStyles = [
   {
     name: 'Traditional',
     description: 'Timeless elegance with raised panel doors, crown molding, and classic details',
-    features: ['Raised Panel Doors', 'Crown Molding', 'Decorative Hardware'],
-    image: '/images/gallery/IMG_6415.jpeg'
+    features: ['Raised Panel Doors', 'Crown Molding', 'Decorative Hardware']
   },
   {
     name: 'Modern',
     description: 'Clean lines, flat panel doors, and minimalist hardware for contemporary homes',
-    features: ['Flat Panel Doors', 'Hidden Hinges', 'Push-to-Open'],
-    image: '/images/gallery/IMG_6664.jpeg'
+    features: ['Flat Panel Doors', 'Hidden Hinges', 'Push-to-Open']
   },
   {
     name: 'Transitional',
     description: 'The perfect blend of traditional warmth and modern simplicity',
-    features: ['Shaker Doors', 'Simple Lines', 'Mixed Materials'],
-    image: '/images/gallery/IMG_5705.jpeg'
+    features: ['Shaker Doors', 'Simple Lines', 'Mixed Materials']
   }
 ];
 
@@ -43,7 +42,6 @@ const cabinetryProjects = [
   {
     id: 1,
     title: 'Full Kitchen Cabinet Suite in Holmdel',
-    image: '/images/gallery/IMG_6417.jpeg',
     location: 'Holmdel, NJ',
     type: 'Kitchen Cabinetry',
     features: ['Soft-Close Drawers', 'Pull-Out Shelves', 'Custom Island']
@@ -51,7 +49,6 @@ const cabinetryProjects = [
   {
     id: 2,
     title: 'Master Bath Vanities in Manalapan',
-    image: '/images/gallery/IMG_0183.jpeg',
     location: 'Manalapan, NJ',
     type: 'Bathroom Vanities',
     features: ['Floating Design', 'Hidden Storage', 'Quartz Tops']
@@ -59,7 +56,6 @@ const cabinetryProjects = [
   {
     id: 3,
     title: 'Library Built-Ins in Wall Township',
-    image: '/images/gallery/IMG_6663.jpeg',
     location: 'Wall Township, NJ',
     type: 'Custom Built-Ins',
     features: ['Floor-to-Ceiling', 'LED Lighting', 'Adjustable Shelves']

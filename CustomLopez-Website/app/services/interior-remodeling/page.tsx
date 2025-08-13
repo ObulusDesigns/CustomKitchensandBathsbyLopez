@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import ServiceSchema from '@/components/seo/ServiceSchema';
 import FAQSchema from '@/components/seo/FAQSchema';
-import ServiceCTA from '@/components/sections/ServiceCTA';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, TRUST_SIGNALS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -172,28 +173,6 @@ const faqs = [
   },
 ];
 
-const galleryImages = [
-  {
-    src: '/images/gallery/IMG_0444.jpeg',
-    alt: 'Modern living room renovation with built-ins',
-    title: 'Contemporary Living Room - Red Bank',
-  },
-  {
-    src: '/images/gallery/IMG_0445.jpeg',
-    alt: 'Master bedroom with tray ceiling and custom closet',
-    title: 'Luxury Master Suite - Rumson',
-  },
-  {
-    src: '/images/gallery/IMG_0446.jpeg',
-    alt: 'Open concept first floor renovation',
-    title: 'Open Concept Design - Holmdel',
-  },
-  {
-    src: '/images/gallery/IMG_0447.jpeg',
-    alt: 'Traditional dining room with wainscoting',
-    title: 'Elegant Dining Room - Colts Neck',
-  },
-];
 
 export default function InteriorRemodelingPage() {
   return (
@@ -264,13 +243,27 @@ export default function InteriorRemodelingPage() {
                 </div>
               </div>
               
-              <div className="relative h-96 lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/gallery/IMG_0442.jpeg"
-                  alt="Beautiful interior remodeling project in Monmouth County"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-xl p-12">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="text-center">
+                    <div className="w-20 h-20 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-10 h-10 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                      </svg>
+                    </div>
+                    <div className="text-3xl font-bold text-gold mb-2">250+</div>
+                    <div className="text-gray-600">Homes Transformed</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-20 h-20 bg-burgundy/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-10 h-10 text-burgundy" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="text-3xl font-bold text-burgundy mb-2">98%</div>
+                    <div className="text-gray-600">Client Satisfaction</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -379,35 +372,17 @@ export default function InteriorRemodelingPage() {
             <div className="space-y-8">
               {beforeAfterProjects.map((project, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  <div className="grid md:grid-cols-2">
-                    <div className="relative h-64 md:h-80">
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
-                      <div className="absolute bottom-4 left-4 z-20">
-                        <span className="bg-burgundy text-white px-3 py-1 rounded text-sm font-semibold">
-                          BEFORE
-                        </span>
-                      </div>
-                      <Image
-                        src={`/images/gallery/IMG_048${index}.jpeg`}
-                        alt={`Before renovation - ${project.room}`}
-                        fill
-                        className="object-cover"
-                      />
+                  <div className="bg-gradient-to-r from-burgundy/5 to-gold/5 p-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="bg-burgundy text-white px-3 py-1 rounded text-sm font-semibold">
+                        TRANSFORMATION
+                      </span>
+                      <span className="text-gold font-bold">
+                        {project.timeline}
+                      </span>
                     </div>
-                    <div className="relative h-64 md:h-80">
-                      <div className="absolute inset-0 bg-gradient-to-l from-black/50 to-transparent z-10"></div>
-                      <div className="absolute bottom-4 right-4 z-20">
-                        <span className="bg-gold text-white px-3 py-1 rounded text-sm font-semibold">
-                          AFTER
-                        </span>
-                      </div>
-                      <Image
-                        src={`/images/gallery/IMG_045${index}.jpeg`}
-                        alt={`After renovation - ${project.room}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <h3 className="text-2xl font-bold text-burgundy mb-2">{project.room}</h3>
+                    <p className="text-gray-700 mb-4">{project.transformation}</p>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-burgundy mb-2">{project.room}</h3>
@@ -434,7 +409,7 @@ export default function InteriorRemodelingPage() {
         </section>
 
         {/* Process Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-gradient-to-br from-white to-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="heading-2 text-burgundy mb-4">
@@ -446,17 +421,14 @@ export default function InteriorRemodelingPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {process.map((item) => (
-                <div key={item.step} className="text-center">
-                  <div className="w-16 h-16 bg-gold text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-semibold text-burgundy mb-3">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
+            <ProcessSteps
+              steps={process.map(item => ({
+                number: item.step.toString(),
+                title: item.title,
+                description: item.description
+              }))}
+              variant="grid"
+            />
           </div>
         </section>
 
@@ -464,13 +436,23 @@ export default function InteriorRemodelingPage() {
         <section className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/gallery/IMG_0443.jpeg"
-                  alt="Our interior remodeling team at work"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-xl p-12">
+                <div className="space-y-6">
+                  {[
+                    { icon: '🎨', title: 'Design Excellence', desc: 'Award-winning designs' },
+                    { icon: '⭐', title: 'Quality First', desc: 'Premium materials only' },
+                    { icon: '🏆', title: 'Expert Team', desc: '50+ years experience' },
+                    { icon: '✅', title: 'Guaranteed', desc: '100% satisfaction' }
+                  ].map((item) => (
+                    <div key={item.title} className="flex items-start space-x-4">
+                      <span className="text-2xl">{item.icon}</span>
+                      <div>
+                        <h4 className="font-bold text-burgundy">{item.title}</h4>
+                        <p className="text-gray-600 text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div>
@@ -546,25 +528,6 @@ export default function InteriorRemodelingPage() {
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="heading-2 text-burgundy mb-4">
-                Interior Remodeling Portfolio
-              </h2>
-              <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                Browse our portfolio of interior transformations throughout Monmouth County. 
-                Each project showcases our commitment to quality and attention to detail.
-              </p>
-            </div>
-            <div className="text-center mt-10">
-              <Link href="/portfolio" className="btn-primary">
-                View Full Portfolio
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
         <section className="section-padding bg-gray-50">
@@ -618,11 +581,14 @@ export default function InteriorRemodelingPage() {
           </div>
         </section>
 
-        <ServiceCTA 
+        <GradientCTA
           title="Ready to Transform Your Home?"
           description="Let's create the interior spaces you've always dreamed of. Schedule your consultation today."
           primaryButtonText="Start Your Transformation"
-          secondaryButtonText="Call (732) 984-1043"
+          primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+          secondaryButtonText="View Portfolio"
+          secondaryButtonLink="/portfolio"
+          variant="burgundy"
         />
       </PageLayout>
     </>

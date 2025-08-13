@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import ServiceSchema from '@/components/seo/ServiceSchema';
 import FAQSchema from '@/components/seo/FAQSchema';
-import ServiceCTA from '@/components/sections/ServiceCTA';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, TRUST_SIGNALS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -160,26 +161,21 @@ const faqs = [
   },
 ];
 
-const galleryImages = [
+const additionBenefits = [
   {
-    src: '/images/gallery/IMG_0427.jpeg',
-    alt: 'Two-story home addition in Colts Neck NJ',
-    title: 'Second Story Addition - Colts Neck',
+    title: 'Increased Home Value',
+    description: 'Well-designed additions typically return 60-80% of investment at resale',
+    icon: 'trending-up',
   },
   {
-    src: '/images/gallery/IMG_0429.jpeg',
-    alt: 'Sunroom addition with vaulted ceilings',
-    title: 'Four Seasons Room - Holmdel',
+    title: 'Avoid Moving Costs',
+    description: 'Expand your current home instead of the expense and hassle of relocating',
+    icon: 'home',
   },
   {
-    src: '/images/gallery/IMG_0430.jpeg',
-    alt: 'Master suite addition with bathroom',
-    title: 'Master Suite Addition - Rumson',
-  },
-  {
-    src: '/images/gallery/IMG_0431.jpeg',
-    alt: 'Modern in-law suite addition',
-    title: 'In-Law Suite - Marlboro',
+    title: 'Custom Design',
+    description: 'Create exactly the space you need, tailored to your family\'s lifestyle',
+    icon: 'palette',
   },
 ];
 
@@ -251,13 +247,16 @@ export default function HomeAdditionsPage() {
 
               </div>
               
-              <div className="relative h-96 lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/gallery/IMG_0425.jpeg"
-                  alt="Beautiful home addition in Monmouth County"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-xl p-12 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-16 h-16 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-3xl font-bold text-burgundy mb-4">{new Date().getFullYear() - BUSINESS_INFO.yearEstablished}+ Years</h3>
+                  <p className="text-xl text-gray-600">Building Quality Additions</p>
+                </div>
               </div>
             </div>
           </div>
@@ -310,13 +309,16 @@ export default function HomeAdditionsPage() {
                       </div>
                     </div>
                     
-                    <div className="lg:w-1/2 relative h-64 lg:h-auto">
-                      <Image
-                        src={`/images/gallery/${type.name.toLowerCase().replace(/\s+/g, '-')}.jpg`}
-                        alt={`${type.name} example in Monmouth County`}
-                        fill
-                        className="object-cover"
-                      />
+                    <div className="lg:w-1/2 bg-gradient-to-br from-gold/5 to-burgundy/5 flex items-center justify-center p-12">
+                      <div className="text-center">
+                        <div className="w-24 h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg className="w-12 h-12 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                          </svg>
+                        </div>
+                        <p className="text-lg font-semibold text-burgundy">Premium Quality</p>
+                        <p className="text-gray-600 mt-2">Every Detail Matters</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -326,7 +328,7 @@ export default function HomeAdditionsPage() {
         </section>
 
         {/* Construction Process */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-gradient-to-br from-white to-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="heading-2 text-burgundy mb-4">
@@ -338,22 +340,14 @@ export default function HomeAdditionsPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {process.map((item) => (
-                <div key={item.step} className="relative">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gold text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                      {item.step}
-                    </div>
-                    <h3 className="text-xl font-semibold text-burgundy mb-3">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
-                  {item.step < process.length && (
-                    <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-gold/30"></div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <ProcessSteps 
+              steps={process.map(item => ({
+                number: item.step.toString(),
+                title: item.title,
+                description: item.description
+              }))}
+              variant="timeline"
+            />
 
             <div className="mt-12 bg-cream rounded-lg p-8">
               <h3 className="text-xl font-semibold text-burgundy mb-4 text-center">
@@ -397,13 +391,20 @@ export default function HomeAdditionsPage() {
         <section className="section-padding bg-cream">
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/gallery/IMG_0426.jpeg"
-                  alt="Home addition construction process"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-xl p-12 flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-6 w-full">
+                  {[
+                    { label: 'Projects Completed', value: '250+' },
+                    { label: 'Years Experience', value: '50+' },
+                    { label: 'Licensed & Insured', value: 'Yes' },
+                    { label: 'Warranty', value: '10 Years' }
+                  ].map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <p className="text-2xl font-bold text-gold mb-1">{stat.value}</p>
+                      <p className="text-sm text-gray-600">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div>
@@ -470,25 +471,16 @@ export default function HomeAdditionsPage() {
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="heading-2 text-burgundy mb-4">
-                Recent Addition Projects
-              </h2>
-              <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                Browse our portfolio of completed home additions throughout Monmouth County. 
-                Each project demonstrates our commitment to quality construction and seamless integration.
-              </p>
-            </div>
-            <div className="text-center mt-10">
-              <Link href="/portfolio" className="btn-primary">
-                Explore More Projects
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* Call to Action */}
+        <GradientCTA
+          title="Ready to Expand Your Home?"
+          description="Let's discuss your vision for more space. Schedule a free consultation to explore addition possibilities for your home."
+          primaryButtonText="Schedule Consultation"
+          primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+          secondaryButtonText="View Portfolio"
+          secondaryButtonLink="/portfolio"
+          variant="dark"
+        />
 
         {/* FAQ Section */}
         <section className="section-padding bg-gray-50">
@@ -542,12 +534,6 @@ export default function HomeAdditionsPage() {
           </div>
         </section>
 
-        <ServiceCTA 
-          title="Ready to Expand Your Home?"
-          description="Let's discuss your vision for more space. Schedule a free consultation to explore addition possibilities for your home."
-          primaryButtonText="Schedule Consultation"
-          secondaryButtonText="Call (732) 984-1043"
-        />
       </PageLayout>
     </>
   );

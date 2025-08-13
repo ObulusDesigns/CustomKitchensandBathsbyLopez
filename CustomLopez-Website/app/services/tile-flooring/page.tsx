@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import ServiceSchema from '@/components/seo/ServiceSchema';
 import FAQSchema from '@/components/seo/FAQSchema';
-import ServiceCTA from '@/components/sections/ServiceCTA';
+import IconServiceCard from '@/components/ui/IconServiceCard';
+import ProcessSteps from '@/components/ui/ProcessSteps';
+import GradientCTA from '@/components/sections/GradientCTA';
 import { BUSINESS_INFO, SERVICE_AREAS, TRUST_SIGNALS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -114,28 +115,6 @@ const faqs = [
   },
 ];
 
-const galleryImages = [
-  {
-    src: '/images/gallery/IMG_6162.jpeg',
-    alt: 'Marble hexagon bathroom floor tile installation',
-    title: 'Marble Hexagon - Master Bath',
-  },
-  {
-    src: '/images/gallery/IMG_6163.jpeg',
-    alt: 'Large format porcelain kitchen floor tiles',
-    title: 'Modern Kitchen - Porcelain',
-  },
-  {
-    src: '/images/gallery/IMG_6164.jpeg',
-    alt: 'Herringbone pattern wood-look tile',
-    title: 'Herringbone Pattern - LVP',
-  },
-  {
-    src: '/images/gallery/IMG_6420.jpeg',
-    alt: 'Natural stone shower installation',
-    title: 'Spa Shower - Natural Stone',
-  },
-];
 
 export default function TileFlooringPage() {
   return (
@@ -208,13 +187,16 @@ export default function TileFlooringPage() {
                 </div>
               </div>
               
-              <div className="relative h-96 lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/gallery/IMG_4150.jpeg"
-                  alt="Professional tile installation in Monmouth County"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-xl p-12 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-burgundy/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-16 h-16 text-burgundy" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-3xl font-bold text-burgundy mb-4">Premium Flooring</h3>
+                  <p className="text-xl text-gray-600">Expert Installation Since {BUSINESS_INFO.yearEstablished}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -233,39 +215,20 @@ export default function TileFlooringPage() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              {flooringTypes.map((type) => (
-                <div key={type.name} className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <div className="p-8">
-                    <h3 className="text-2xl font-semibold text-burgundy mb-3">{type.name}</h3>
-                    <p className="text-gray-600 mb-4">{type.description}</p>
-                    
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-burgundy mb-2">Key Benefits:</h4>
-                      <ul className="grid grid-cols-2 gap-2">
-                        {type.features.map((feature) => (
-                          <li key={feature} className="flex items-center space-x-2">
-                            <svg className="w-4 h-4 text-gold flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                            <span className="text-sm text-gray-700">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                      <div>
-                        <span className="text-sm text-gray-600">Best for:</span>
-                        <p className="text-sm font-semibold text-burgundy">{type.bestFor}</p>
-                      </div>
-                      <div>
-                        <span className="text-sm text-gray-600">Investment:</span>
-                        <p className="text-sm font-semibold text-gold">{type.priceRange}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              {flooringTypes.map((type, index) => (
+                <IconServiceCard
+                  key={index}
+                  icon={
+                    <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                    </svg>
+                  }
+                  title={type.name}
+                  description={`${type.description} Best for: ${type.bestFor}. Investment: ${type.priceRange}`}
+                  features={type.features.slice(0, 3)}
+                  accentColor={index % 2 === 0 ? 'gold' : 'burgundy'}
+                />
               ))}
             </div>
           </div>
@@ -302,7 +265,7 @@ export default function TileFlooringPage() {
         </section>
 
         {/* Installation Process */}
-        <section className="section-padding bg-cream">
+        <section className="section-padding bg-gradient-to-br from-cream to-white">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="heading-2 text-burgundy mb-4">
@@ -314,17 +277,14 @@ export default function TileFlooringPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {process.map((item) => (
-                <div key={item.step} className="bg-white rounded-lg p-6 text-center shadow-md">
-                  <div className="w-14 h-14 bg-gold text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-lg font-semibold text-burgundy mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
-                </div>
-              ))}
-            </div>
+            <ProcessSteps
+              steps={process.map(item => ({
+                number: item.step.toString(),
+                title: item.title,
+                description: item.description
+              }))}
+              variant="timeline"
+            />
           </div>
         </section>
 
@@ -386,37 +346,32 @@ export default function TileFlooringPage() {
                 </div>
               </div>
 
-              <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-xl order-1 lg:order-2">
-                <Image
-                  src="/images/gallery/IMG_4151.jpeg"
-                  alt="Our expert flooring installation team"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-xl p-12 order-1 lg:order-2">
+                <div className="space-y-8">
+                  <div className="text-center">
+                    <div className="text-5xl font-bold text-gold mb-2">25K+</div>
+                    <p className="text-gray-600">Sq Ft Installed</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-burgundy">15+</div>
+                      <p className="text-sm text-gray-600">Years Experience</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-burgundy">100%</div>
+                      <p className="text-sm text-gray-600">Satisfaction</p>
+                    </div>
+                  </div>
+                  <div className="bg-white/50 rounded-lg p-4 text-center">
+                    <p className="text-burgundy font-semibold">Quality Guaranteed</p>
+                    <p className="text-sm text-gray-600 mt-1">Every Installation</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <section className="section-padding bg-gray-50">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="heading-2 text-burgundy mb-4">
-                Recent Flooring Projects
-              </h2>
-              <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                See examples of our tile and flooring installations in homes throughout Monmouth County. 
-                Each project showcases our commitment to quality and attention to detail.
-              </p>
-            </div>
-            <div className="text-center mt-10">
-              <Link href="/portfolio" className="btn-primary">
-                View Complete Portfolio
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
         <section className="section-padding bg-white">
@@ -469,11 +424,14 @@ export default function TileFlooringPage() {
           </div>
         </section>
 
-        <ServiceCTA 
+        <GradientCTA
           title="Ready for Beautiful New Floors?"
           description="Whether it's a bathroom refresh or whole-home flooring, we're here to help. Schedule your free consultation and let's explore the possibilities."
           primaryButtonText="Get Your Free Quote"
-          secondaryButtonText="Browse Flooring Options"
+          primaryButtonLink={`tel:${BUSINESS_INFO.phone}`}
+          secondaryButtonText="View Portfolio"
+          secondaryButtonLink="/portfolio"
+          variant="burgundy"
         />
       </PageLayout>
     </>

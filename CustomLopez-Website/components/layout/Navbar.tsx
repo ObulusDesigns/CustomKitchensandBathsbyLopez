@@ -50,7 +50,7 @@ return (
               <span>{BUSINESS_INFO.email}</span>
             </a>
             
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+            <a href={`tel:${BUSINESS_INFO.phone.replace(/\./g, '')}`} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -224,18 +224,29 @@ return (
             </Link>
           </div>
 
-          {/* Right Side - Phone CTA */}
-          <div className="hidden lg:flex items-center">
+          {/* Right Side - Phone CTA & Quote Button */}
+          <div className="hidden lg:flex items-center space-x-3">
             {/* Phone Number */}
             <a
-              href={`tel:${BUSINESS_INFO.phone}`}
-              className="flex items-center space-x-2 text-gold hover:text-white transition-colors duration-300 bg-burgundy hover:bg-burgundy-light px-6 py-3 rounded-lg font-bold transform hover:scale-105 transition-all duration-300 shadow-lg"
+              href={`tel:${BUSINESS_INFO.phone.replace(/\./g, '')}`}
+              className="flex items-center space-x-2 text-gold hover:text-white transition-colors duration-300 bg-burgundy hover:bg-burgundy-light px-5 py-2.5 rounded-lg font-bold transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span>Call Now: {BUSINESS_INFO.phone}</span>
+              <span>{BUSINESS_INFO.phone}</span>
             </a>
+            
+            {/* Get a Quote Button */}
+            <Link
+              href="https://ocyrus.app.n8n.cloud/form/0dcd36c0-d370-4baa-9b73-3c9cf97b5be5"
+              className="flex items-center space-x-2 bg-gold hover:bg-gold-dark text-burgundy px-5 py-2.5 rounded-lg font-bold transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+              <span>Get a Quote</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -309,7 +320,7 @@ return (
 
             <div className="pt-6 space-y-4 border-t border-white/20">
               <a
-                href={`tel:${BUSINESS_INFO.phone}`}
+                href={`tel:${BUSINESS_INFO.phone.replace(/\./g, '')}`}
                 className="flex items-center space-x-2 text-gold hover:text-white transition-colors duration-300"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -317,6 +328,13 @@ return (
                 </svg>
                 <span className="font-semibold">{BUSINESS_INFO.phone}</span>
               </a>
+              
+              <Link
+                href="https://ocyrus.app.n8n.cloud/form/0dcd36c0-d370-4baa-9b73-3c9cf97b5be5"
+                className="block w-full py-3 bg-gold text-burgundy text-center font-bold rounded-lg hover:bg-gold-dark transition-colors duration-300"
+              >
+                Get a Quote
+              </Link>
             </div>
           </div>
         </div>

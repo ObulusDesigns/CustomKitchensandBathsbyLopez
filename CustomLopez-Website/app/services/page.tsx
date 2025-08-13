@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import PageLayout from '@/components/layout/PageLayout';
+import IconServiceCard from '@/components/ui/IconServiceCard';
 import { SERVICES, SERVICE_AREAS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -10,16 +10,6 @@ export const metadata: Metadata = {
   keywords: 'remodeling services, kitchen remodeling, bathroom renovation, custom cabinetry, Monmouth County, NJ',
 };
 
-const serviceImages = {
-  'kitchen-remodeling': '/images/gallery/IMG_4149.jpeg',
-  'bathroom-remodeling': '/images/gallery/IMG_0428.jpeg',
-  'custom-cabinetry': '/images/gallery/IMG_6415.jpeg',
-  'countertop-installation': '/images/gallery/IMG_0028.jpeg',
-  'tile-flooring': '/images/gallery/IMG_6162.jpeg',
-  'home-additions': '/images/gallery/IMG_6483.jpeg',
-  'basement-finishing': '/images/gallery/IMG_6885.jpeg',
-  'interior-remodeling': '/images/gallery/IMG_6887.jpeg',
-};
 
 export default function ServicesPage() {
   return (
@@ -84,15 +74,17 @@ export default function ServicesPage() {
                   </Link>
                 </div>
 
-                <div className={`relative h-96 rounded-xl overflow-hidden shadow-xl ${
+                <div className={`bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-xl p-12 flex items-center justify-center ${
                   index % 2 === 1 ? 'lg:order-1' : ''
                 }`}>
-                  <Image
-                    src={serviceImages[service.id as keyof typeof serviceImages]}
-                    alt={`${service.name} in Monmouth County`}
-                    fill
-                    className="object-cover"
-                  />
+                  <div className="text-center">
+                    <div className="w-32 h-32 bg-burgundy/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-16 h-16 text-burgundy" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-burgundy">{service.name}</h3>
+                  </div>
                 </div>
               </div>
             ))}
@@ -188,13 +180,25 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/gallery/IMG_0426.jpeg"
-                alt="Our team at work on a kitchen remodel"
-                fill
-                className="object-cover"
-              />
+            <div className="bg-gradient-to-br from-gold/10 to-burgundy/10 rounded-xl p-12 flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-8 w-full">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-gold mb-2">8+</div>
+                  <p className="text-gray-600">Core Services</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-burgundy mb-2">500+</div>
+                  <p className="text-gray-600">Projects Completed</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-gold mb-2">50+</div>
+                  <p className="text-gray-600">Years Experience</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-burgundy mb-2">100%</div>
+                  <p className="text-gray-600">Satisfaction</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
